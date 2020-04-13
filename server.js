@@ -19,9 +19,9 @@ mongoose.connect(
 	process.env.MONGODB_URI ||
 		'mongodb://rcerpa:rc032090@ds263248.mlab.com:63248/heroku_5zmsscpq',
 	{
+		useUnifiedTopology : true
 		// useNewUrlParser  : true,
 		// useFindAndModify : false,
-		useMongoClient : true
 	}
 );
 
