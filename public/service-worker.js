@@ -11,8 +11,21 @@ self.addEventListener('install', (evt) => {
 	self.skipWaiting();
 });
 
-self.addEventListener('activate', (evt) => {
-	console.log('service worker activated');
+self.addEventListener('activate', function(evt) {
+	evt.waitUntil(
+		caches.keys().then((keyList) => {
+			return Promise.all(
+				keyList.map((key) => {
+					if (key !== PRECACHE && key !== RUNTIME) {
+						console.log('Removing old cache data', key);
+						return caches.delete(key);
+					}
+				})
+			);
+		})
+	);
+
+	self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
