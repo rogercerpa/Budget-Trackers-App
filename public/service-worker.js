@@ -13,7 +13,7 @@ self.addEventListener('install', function(evt) {
 	self.skipWaiting();
 });
 
-self.addEventListener('activate', function(evt) {
+self.addEventListener('activate', (evt) => {
 	evt.waitUntil(
 		caches.keys().then((keyList) => {
 			return Promise.all(
