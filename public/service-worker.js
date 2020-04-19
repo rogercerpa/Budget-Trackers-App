@@ -18,7 +18,7 @@ self.addEventListener('activate', function(evt) {
 		caches.keys().then((keyList) => {
 			return Promise.all(
 				keyList.map((key) => {
-					if (key !== PRECACHE && key !== RUNTIME) {
+					if (key !== preCache && key !== RUNTIME) {
 						console.log('Removing old cache data', key);
 						return caches.delete(key);
 					}
