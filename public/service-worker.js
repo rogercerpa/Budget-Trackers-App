@@ -1,17 +1,17 @@
-const FILES_TO_CACHE = [
+const staticCache = [
 	'/',
 	'/index.html',
 	'/style.css',
 	'/index.js',
 	'/app.js'
 ];
-const PRECACHE = 'precache-v1';
-const RUNTIME = 'runtime';
+const preCache = 'precache-v1';
+// const RUNTIME = 'runtime';
 
 self.addEventListener('install', (evt) => {
 	evt.waitUntil(
-		caches.open(PRECACHE).then((cache) => {
-			cache.addAll(FILES_TO_CACHE);
+		caches.open(preCache).then((cache) => {
+			cache.addAll(staticCache);
 		})
 	);
 	// self.skipWaiting();
